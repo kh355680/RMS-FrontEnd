@@ -1,0 +1,41 @@
+﻿
+<div class="row">
+    <div class="col-lg-4">
+        
+        <div>Food Categories</div>
+        <hr/>
+        <ul class="list-group" id='listGroup' ng-repeat="foodCategory in vm.foodCategories">
+            <li ng-click="vm.getFoodItemsByFoodCategoryId(foodCategory.Id)"
+               class="list-group-item">
+                {{foodCategory.Name}}
+                
+            </li>
+        </ul>
+    </div>
+    <div class="col-lg-4">
+        <div>Food Items</div>
+        <hr />
+        <div class="list-group" ng-repeat="foodItem in vm.selectedFoodItemsViewModel">
+            <div
+                class="list-group-item">
+                {{foodItem.name}}
+                Rate: {{foodItem.rate}}
+                <input type="number" ng-model="foodItem.quantity"/>
+                <button ng-click="vm.itemAddToOrder(foodItem)">Add To Order</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div>Order Items</div>
+        <hr />
+        <div class="list-group" ng-repeat="orderItem in vm.orderViewModel.orderItems">
+            <div class="list-group-item">
+                {{orderItem.name}}
+                Total {{orderItem.total}}
+
+            </div>
+        </div>
+        Total: {{vm.orderViewModel.total}}
+    </div>
+</div>
+
